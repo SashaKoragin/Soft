@@ -13,6 +13,18 @@ namespace Программное_обеспечение_для_Диспетче�
 {
    public class ModellAddApplication : BindableBase, IDataErrorInfo
    {
+       private string _statistic = null;
+
+        public string Statistic
+        {
+            get { return _statistic; }
+            set
+            {
+                _statistic = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private DateTime _startDateTime = DateTime.Now;
 
        public DateTime StartDateTime
@@ -230,11 +242,11 @@ namespace Программное_обеспечение_для_Диспетче�
                     { _isValid = true; break; }
                     { Error = "Ошибка не введена проблема"; break; }
                 case "StartDateTime":
-                    if (StartDateTime <= DateTime.Today||StartDateTime < FinishDateTime)
+                    if (StartDateTime < FinishDateTime)
                     { _isValid = true; break; }
                     { Error = "Дата не может превышать сегодняшнюю дату а также финиширующюю!!!"; break; }
                 case "FinishDateTime":
-                    if (FinishDateTime <= DateTime.Today || StartDateTime > FinishDateTime)
+                    if (FinishDateTime > StartDateTime)
                     { _isValid = true; break; }
                     { Error = "Дата не может превышать сегодняшнюю дату а также стартующую!!!"; break; }
             }
@@ -292,7 +304,7 @@ namespace Программное_обеспечение_для_Диспетче�
        /// </summary>
        public void SeathStatistics()
        {
-           if (IsValidationDateStatistics())
+           if (!IsValidationDateStatistics())
            {
 
            }
@@ -301,8 +313,7 @@ namespace Программное_обеспечение_для_Диспетче�
                 using (DbTest db = new DbTest())
                 {
                     var app = db.Aplication.Where(appl => appl.DateCreate >= StartDateTime || appl.DateCreate <= FinishDateTime);
-                    MessageBox.Show("Количество " + app.Count().ToString() + " в диопазоне");
-
+                    Statistic =$@"Количество {app.Count()} заявок в диопазоне c {StartDateTime} по {FinishDateTime}";
                 }
             }
        }

@@ -6,6 +6,7 @@
     xmlns:datacontext="clr-namespace:Программное_обеспечение_для_Диспетчеров_Службы_Спасения.WpfForm.ViewModel"
     xmlns:local="clr-namespace:Программное_обеспечение_для_Диспетчеров_Службы_Спасения.WpfForm.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sparrow="http://sparrowtoolkit.codeplex.com/wpf"
     d:DataContext="{d:DesignInstance {x:Type datacontext:ViewModel}}"
     d:DesignHeight="300"
     d:DesignWidth="300"
@@ -38,13 +39,13 @@
             <WrapPanel>
                 <Label Content="Дата начала статистики:      " />
                 <DatePicker
-                    SelectedDate="{Binding ModelApplication.StartDateTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    SelectedDate="{Binding ModelApplication.StartDateTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True, ValidatesOnDataErrors=True}"
                     Text="{Binding Path=SelectedDate, Mode=TwoWay, StringFormat='dd MMM yyyy', RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}"
                     ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}"
-                    Validation.ErrorTemplate="{StaticResource ValidationFailederror}" >
+                    Validation.ErrorTemplate="{StaticResource ValidationFailederror}">
                     <DatePicker.Resources>
                         <Style TargetType="DatePickerTextBox">
-                            <Setter Property="IsReadOnly" Value="True"/>
+                            <Setter Property="IsReadOnly" Value="True" />
                         </Style>
                     </DatePicker.Resources>
                 </DatePicker>
@@ -52,18 +53,19 @@
             <WrapPanel>
                 <Label Content="Дата окончания статистики:" />
                 <DatePicker
-                    SelectedDate="{Binding ModelApplication.FinishDateTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                    SelectedDate="{Binding ModelApplication.FinishDateTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True, ValidatesOnDataErrors=True}"
                     Text="{Binding Path=SelectedDate, Mode=TwoWay, StringFormat='dd MMM yyyy', RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}"
                     ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}"
                     Validation.ErrorTemplate="{StaticResource ValidationFailederror}">
                     <DatePicker.Resources>
                         <Style TargetType="DatePickerTextBox">
-                            <Setter Property="IsReadOnly" Value="True"/>
+                            <Setter Property="IsReadOnly" Value="True" />
                         </Style>
                     </DatePicker.Resources>
                 </DatePicker>
             </WrapPanel>
             <Button Command="{Binding Statistic}" Content="Собрать статистику!" />
+            <Label Margin="10" Content="{Binding ModelApplication.Statistic}" />
         </StackPanel>
     </Grid>
 </UserControl>
