@@ -10,5 +10,86 @@
     mc:Ignorable="d">
     <Grid>
         <Label Content="Выполненные заявки" />
+        <ListView
+            Width="Auto"
+            MaxHeight="200"
+            ItemsSource="{Binding ModelApplication.ApplicationWin}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="Auto" Header="Id">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel Width="Auto">
+                                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding Id}" />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="Name">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel Width="Auto">
+                                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding Name}" />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="Surname">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel Width="Auto">
+                                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding Surname}" />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="MiddleName">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel Width="Auto">
+                                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding MiddleName}" />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="Adress">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel Width="Auto">
+                                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding Adress}" />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="Problem">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel Width="Auto">
+                                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding Problem}" />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="Status">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel Width="Auto">
+                                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding Status}" />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="DateCreate">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <WrapPanel Width="Auto">
+                                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding DateCreate}" />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>
