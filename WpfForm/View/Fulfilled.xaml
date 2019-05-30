@@ -23,7 +23,8 @@
             <ListView
                 Width="Auto"
                 MaxHeight="200"
-                ItemsSource="{Binding ModelApplication.ApplicationWin}">
+                ItemsSource="{Binding ModelApplication.ApplicationWin}"
+                SelectedItem="{Binding ModelApplication.SelectAplication}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Width="Auto" Header="Id">
@@ -100,6 +101,11 @@
                         </GridViewColumn>
                     </GridView>
                 </ListView.View>
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Command="{Binding DeleteApplication}" Header="Удалить заявку!!!" />
+                    </ContextMenu>
+                </ListView.ContextMenu>
             </ListView>
         </StackPanel>
     </Grid>

@@ -42,35 +42,40 @@
                     HorizontalAlignment="Left"
                     DockPanel.Dock="Top"
                     Text="{Binding ModelApplication.Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnDataErrors=True}"
-                    ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                    ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}"
+                    Validation.ErrorTemplate="{StaticResource ValidationFailederror}" />
             </WrapPanel>
             <WrapPanel Margin="5,5,5,5">
                 <Label Content="Фамилия: " />
                 <TextBox
                     Width="200"
                     Text="{Binding ModelApplication.Surname, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnDataErrors=True}"
-                    ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                    ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}"
+                    Validation.ErrorTemplate="{StaticResource ValidationFailederror}" />
             </WrapPanel>
             <WrapPanel Margin="5,5,5,5">
                 <Label Content="Отчество: " />
                 <TextBox
                     Width="200"
                     Text="{Binding ModelApplication.MiddleName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnDataErrors=True}"
-                    ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                    ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}"
+                    Validation.ErrorTemplate="{StaticResource ValidationFailederror}" />
             </WrapPanel>
             <WrapPanel Margin="5,5,5,5">
                 <Label Content="Адрес:       " />
                 <TextBox
                     Width="200"
                     Text="{Binding ModelApplication.Adress, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnDataErrors=True}"
-                    ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                    ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}"
+                    Validation.ErrorTemplate="{StaticResource ValidationFailederror}" />
             </WrapPanel>
             <WrapPanel Margin="5,5,5,5">
                 <Label Content="Проблема:" />
                 <TextBox
                     Width="200"
                     Text="{Binding ModelApplication.Problem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnDataErrors=True}"
-                    ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                    ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}"
+                    Validation.ErrorTemplate="{StaticResource ValidationFailederror}" />
             </WrapPanel>
             <Button
                 Width="100"
@@ -171,6 +176,7 @@
                 <ListView.ContextMenu>
                     <ContextMenu>
                         <MenuItem Command="{Binding StatusWin}" Header="Поставить статус выполнено!!!" />
+                        <MenuItem Command="{Binding DeleteApplication}" Header="Удалить заявку!!!" />
                     </ContextMenu>
                 </ListView.ContextMenu>
             </ListView>

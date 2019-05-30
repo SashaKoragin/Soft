@@ -282,8 +282,25 @@ namespace Программное_обеспечение_для_Диспетче�
 
        }
 
+        public void DeleteApplication()
+        {
+            if (SelectAplication == null)
+            {
+                MessageBox.Show(@"Ошибка не выбран объект");
+            }
+            else
+            {
+                using (DbTest db = new DbTest())
+                {
+                    db.Entry(SelectAplication).State = EntityState.Deleted;
+                    db.SaveChanges();
+                }
+                UpdateModel();
+            }
+        }
 
-    public void CreateApplication()
+
+        public void CreateApplication()
         {
             if (IsValidation())
             {

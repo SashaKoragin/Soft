@@ -16,6 +16,8 @@ namespace Программное_обеспечение_для_Диспетче�
         public ICommand CreteApplication { get; set; }
         public ICommand StatusWin { get; set; }
 
+        public ICommand DeleteApplication{ get; set; }
+
         public ICommand Statistic { get; set; }
         /// <summary>
         /// Модель всех форм
@@ -26,6 +28,7 @@ namespace Программное_обеспечение_для_Диспетче�
            CreteApplication = new DelegateCommand((() => { ModelApplication.CreateApplication(); }));
            StatusWin = new DelegateCommand((() => { ModelApplication.StatusWin(); }));
            Statistic = new DelegateCommand((() => { ModelApplication.SeathStatistics(); }));
+           DeleteApplication = new DelegateCommand((() => { ModelApplication.DeleteApplication(); }));
         }
 
     }
