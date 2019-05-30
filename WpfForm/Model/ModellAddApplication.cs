@@ -13,7 +13,32 @@ namespace Программное_обеспечение_для_Диспетче�
 {
    public class ModellAddApplication : BindableBase, IDataErrorInfo
    {
-       public ModellAddApplication()
+        private DateTime _startDateTime = DateTime.Now;
+
+       public DateTime StartDateTime
+        {
+            get { return _startDateTime; }
+            set
+            {
+                _startDateTime = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private DateTime _finishDateTime = DateTime.Now;
+
+        public DateTime FinishDateTime
+        {
+            get { return _finishDateTime; }
+            set
+            {
+                _finishDateTime = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        public ModellAddApplication()
        {
            UpdateModel();
        }
@@ -204,12 +229,29 @@ namespace Программное_обеспечение_для_Диспетче�
                     if (!String.IsNullOrEmpty(Problem))
                     { _isValid = true; break; }
                     { Error = "Ошибка не введена проблема"; break; }
+                case "StartDateTime":
+                    if (StartDateTime <= DateTime.Today||StartDateTime < FinishDateTime)
+                    { _isValid = true; break; }
+                    { Error = "Дата не может превышать сегодняшнюю дату а также финиширующюю!!!"; break; }
+                case "FinishDateTime":
+                    if (FinishDateTime <= DateTime.Today || StartDateTime > FinishDateTime)
+                    { _isValid = true; break; }
+                    { Error = "Дата не может превышать сегодняшнюю дату а также стартующую!!!"; break; }
             }
             return Error;
         }
+        /// <summary>
+        /// Проверка даты на статистике
+        /// </summary>
+        /// <returns></returns>
+        public bool IsValidationDateStatistics()
+        {
+            RaisePropertyChanged("StartDateTime");
+            RaisePropertyChanged("FinishDateTime");
+            return _isValid;
+        }
 
-
-       public void StatusWin()
+        public void StatusWin()
        {
            if (SelectAplication == null)
            {
@@ -244,5 +286,25 @@ namespace Программное_обеспечение_для_Диспетче�
                 }
             }
         }
-    }
+
+       /// <summary>
+       /// Сбор статистики
+       /// </summary>
+       public void SeathStatistics()
+       {
+           if (IsValidationDateStatistics())
+           {
+
+           }
+           else
+           {
+                using (DbTest db = new DbTest())
+                {
+                    var app = db.Aplication.Where(appl => appl.DateCreate >= StartDateTime || appl.DateCreate <= FinishDateTime);
+                    MessageBox.Show("Количество " + app.Count().ToString() + " в диопазоне");
+
+                }
+            }
+       }
+   }
 }
