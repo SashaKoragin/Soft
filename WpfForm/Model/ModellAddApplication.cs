@@ -304,7 +304,15 @@ namespace Программное_обеспечение_для_Диспетче�
         {
             if (IsValidation())
             {
-                var application = new Model.Aplication() {Name = Name, Adress = Adress, Surname = Surname, MiddleName = MiddleName, Problem = Problem, Status = true} ;
+                var application = new Model.Aplication()
+                {
+                    Name = Name,
+                    Adress = Adress,
+                    Surname = Surname,
+                    MiddleName = MiddleName,
+                    Problem = Problem,
+                    Status = true
+                };
 
                 using (DbTest db = new DbTest())
                 {
@@ -313,6 +321,10 @@ namespace Программное_обеспечение_для_Диспетче�
                     MessageDb = "Сохранили В БД";
                     UpdateModel();
                 }
+            }
+            else
+            {
+                MessageBox.Show(@"Не введены данные");
             }
         }
 

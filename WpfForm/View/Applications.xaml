@@ -11,7 +11,7 @@
     d:DesignWidth="300"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <ControlTemplate x:Key="ValidationFailederror">
+        <ControlTemplate x:Key="ValidationFailed">
             <StackPanel Orientation="Horizontal">
                 <Border BorderBrush="Red" BorderThickness="3">
                     <AdornedElementPlaceholder />
@@ -43,7 +43,7 @@
                     DockPanel.Dock="Top"
                     Text="{Binding ModelApplication.Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnDataErrors=True}"
                     ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}"
-                    Validation.ErrorTemplate="{StaticResource ValidationFailederror}" />
+                    Validation.ErrorTemplate="{StaticResource ValidationFailed}" />
             </WrapPanel>
             <WrapPanel Margin="5,5,5,5">
                 <Label Content="Фамилия: " />
@@ -51,7 +51,7 @@
                     Width="200"
                     Text="{Binding ModelApplication.Surname, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnDataErrors=True}"
                     ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}"
-                    Validation.ErrorTemplate="{StaticResource ValidationFailederror}" />
+                    Validation.ErrorTemplate="{StaticResource ValidationFailed}" />
             </WrapPanel>
             <WrapPanel Margin="5,5,5,5">
                 <Label Content="Отчество: " />
@@ -59,7 +59,7 @@
                     Width="200"
                     Text="{Binding ModelApplication.MiddleName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnDataErrors=True}"
                     ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}"
-                    Validation.ErrorTemplate="{StaticResource ValidationFailederror}" />
+                    Validation.ErrorTemplate="{StaticResource ValidationFailed}" />
             </WrapPanel>
             <WrapPanel Margin="5,5,5,5">
                 <Label Content="Адрес:       " />
@@ -67,7 +67,7 @@
                     Width="200"
                     Text="{Binding ModelApplication.Adress, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnDataErrors=True}"
                     ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}"
-                    Validation.ErrorTemplate="{StaticResource ValidationFailederror}" />
+                    Validation.ErrorTemplate="{StaticResource ValidationFailed}" />
             </WrapPanel>
             <WrapPanel Margin="5,5,5,5">
                 <Label Content="Проблема:" />
@@ -75,7 +75,7 @@
                     Width="200"
                     Text="{Binding ModelApplication.Problem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True, ValidatesOnDataErrors=True}"
                     ToolTip="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}"
-                    Validation.ErrorTemplate="{StaticResource ValidationFailederror}" />
+                    Validation.ErrorTemplate="{StaticResource ValidationFailed}" />
             </WrapPanel>
             <Button
                 Width="100"
